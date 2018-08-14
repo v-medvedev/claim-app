@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.container > * {
+    width: 100%;
+}
+
+.claim_processed {
+    background-color: #29fc4c;
+}
+
+.claim_pending_uk {
+    background-color: #80a8ff;
+}
+
+.claim_pending_intl {
+    background-color: #2465f4;
+}
+
+.claim_accepted {
+    background-color: #d124f4;
+}
+
+.claim_no_reply {
+    background-color: #cef424;
+}
+
+.claim_over_time {
+    background-color: #fa390e;
+}
+
+.claim_delivered {
+    background-color: #e49c16;
+}
+
+.claim_unable {
+    background-color: #7f009e;
+}
+
+.claim_follow_up {
+    background-color: #9e630a;
+}

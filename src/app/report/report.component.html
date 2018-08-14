@@ -1,0 +1,78 @@
+<form>
+  <mat-form-field class='dt-picker'>
+    <input matInput [matDatepicker]="dtFrom" placeholder="Start Date" [formControl]="dateFrom">
+    <mat-datepicker-toggle matSuffix [for]="dtFrom"></mat-datepicker-toggle>
+    <mat-datepicker #dtFrom></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class='dt-picker'>
+    <input matInput [matDatepicker]="dtTo" placeholder="Finish Date" [formControl]="dateTo">
+    <mat-datepicker-toggle matSuffix [for]="dtTo"></mat-datepicker-toggle>
+    <mat-datepicker #dtTo></mat-datepicker>
+  </mat-form-field>
+</form>
+<div class="button-row">
+  <button mat-raised-button color="warn" (click)="createReport()">Do Report</button>
+  <br>
+  <table *ngIf="reportDone" style="width: 100%;">
+    <tr>
+      <td style="width: 30%;">
+        <h2>Claims</h2>
+        <div class="table-container mat-elevation-z8">
+          <table mat-table [dataSource]="claimMetrics" class="mat-elevation-z8">
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef style="width: 200px;"></th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="value">
+                <th mat-header-cell *matHeaderCellDef style="width: 70px;"></th>
+                <td mat-cell *matCellDef="let element"> {{element.value}} </td>
+              </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let i = index; let row; columns: displayedColumns;" [ngClass]="row.class"></tr>
+          </table>
+        </div>
+      </td>
+      <td style="width: 70%;">
+        <ngx-charts-bar-vertical
+          [view]="view"
+          [scheme]="colorScheme"
+          [results]="claimMetrics"
+          [gradient]="gradient"
+          [xAxis]="showXAxis"
+          [yAxis]="showYAxis"
+          [legend]="showLegend"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [showDataLabel]="true">
+        </ngx-charts-bar-vertical>
+      </td>
+    </tr>
+    <tr>
+      <td style="width: 30%;">
+        <h2>Credits</h2>
+        <div class="table-container mat-elevation-z8">
+          <table mat-table [dataSource]="creditMetrics" class="mat-elevation-z8">
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef style="width: 200px;"></th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="value">
+                <th mat-header-cell *matHeaderCellDef style="width: 70px;"></th>
+                <td mat-cell *matCellDef="let element"> {{element.value | currency : '£' }} </td>
+              </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let i = index; let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+      </td>
+      <td style="width: 70%;">
+        <ngx-charts-advanced-pie-chart
+          [view]="view"
+          [scheme]="colorScheme2"
+          [results]="creditMetrics"
+          [gradient]="gradient">
+        </ngx-charts-advanced-pie-chart>
+      </td>
+    </tr>
+  </table>
+</div>

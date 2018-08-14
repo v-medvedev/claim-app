@@ -1,0 +1,57 @@
+<div class="container mat-elevation-z8">
+  <div class="button-row">
+    <button mat-raised-button color="warn" [disabled]="isEditClaim" (click)="addClaim()">Add Claim</button>
+    <button mat-raised-button color="warn" [disabled]="!isEditClaim" (click)="editClaim()">Edit Claim</button>
+    <button mat-raised-button color="warn" [disabled]="!isEditClaim" (click)="deleteClaim()">Delete Claim</button>
+  </div>
+  <div class="table-container mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort matSortActive="dateOfClaim" matSortDisableClear matSortDirection="desc" class="mat-elevation-z8">
+      <ng-container matColumnDef="dateOfClaim">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 8%;"> Date of Claim </th>
+        <td mat-cell *matCellDef="let element"> {{element.dateOfClaim | date : 'dd/MM/yyyy'}} </td>
+      </ng-container>
+      <ng-container matColumnDef="orderNo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 8%;"> Order # </th>
+        <td mat-cell *matCellDef="let element"> {{element.orderNo | slice : 0 : 10}} </td>
+      </ng-container>
+      <ng-container matColumnDef="stockNumber">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 8%;"> SKU </th>
+        <td mat-cell *matCellDef="let element"> {{element.stockNumber | slice : 0 : 35}} </td>
+      </ng-container>
+      <ng-container matColumnDef="dispatchDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 8%;"> Dispatch Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.dispatchDate | date : 'dd/MM/yyyy'}} </td>
+      </ng-container>
+      <ng-container matColumnDef="dateToClaimFrom">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 8%;"> Date to Claim From </th>
+        <td mat-cell *matCellDef="let element"> {{element.dateToClaimFrom | date : 'dd/MM/yyyy'}} </td>
+      </ng-container>
+      <ng-container matColumnDef="trackingNumber">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 8%;"> Tracking Number </th>
+        <td mat-cell *matCellDef="let element"> {{element.trackingNumber | slice : 0 : 20}} </td>
+      </ng-container>
+      <ng-container matColumnDef="reasonForClaim">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 20%;"> Reason For Claim </th>
+        <td mat-cell *matCellDef="let element"> {{element.reasonForClaim | slice : 0 : 150}} </td>
+      </ng-container>
+      <ng-container matColumnDef="prepaidLabel">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 8%;"> Pre Paid Label ONLY </th>
+        <td mat-cell *matCellDef="let element"> {{element.prepaidLabel | slice : 0 : 20}} </td>
+      </ng-container>
+      <ng-container matColumnDef="claimType">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 8%;"> National/International </th>
+        <td mat-cell *matCellDef="let element"> {{element.claimType}} </td>
+      </ng-container>
+      <ng-container matColumnDef="claimSubmitted">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 8%;"> Claim Submitted </th>
+        <td mat-cell *matCellDef="let element"> {{element.claimSubmitted}} </td>
+      </ng-container>
+      <ng-container matColumnDef="claimSubmittedDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 8%;"> Date Claim Submitted </th>
+        <td mat-cell *matCellDef="let element"> {{element.claimSubmittedDate | date : 'dd/MM/yyyy'}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let i = index; let row; columns: displayedColumns;" (click)="selectRow(row)" [ngClass]="{'selected': row.isSelected}" [ngStyle]="getStyle(row)"></tr>
+    </table>
+  </div>
+</div>

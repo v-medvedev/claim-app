@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Edit Claim</h1>
+<div mat-dialog-content>
+  <form #f="ngForm" class="container" novalidate>
+    <mat-form-field>
+      <input name="dateClaimSubmitted" matInput [matDatepicker]="picker1" placeholder="Date Claim Submitted" [(ngModel)]="credit.dateClaimSubmitted" required>
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input name="referenceNumber" matInput placeholder="Reference #" [(ngModel)]="credit.referenceNumber">
+    </mat-form-field>
+    <mat-form-field>
+      <input name="reason" matInput placeholder="Reason" [(ngModel)]="credit.reason">
+    </mat-form-field>
+    <mat-form-field>
+      <input name="amountCredited" type="number" matInput placeholder="Amount Credited" [(ngModel)]="credit.amountCredited" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input name="notes" matInput placeholder="Notes" [(ngModel)]="credit.notes">
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="credit" cdkFocusInitial [disabled]="f.invalid">Save Changes</button>
+</div>

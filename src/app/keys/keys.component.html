@@ -1,0 +1,10 @@
+<div class="table-container mat-elevation-z8">
+  <table mat-table [dataSource]="colorCodes" class="mat-elevation-z8">
+    <ng-container matColumnDef="reason">
+      <th mat-header-cell *matHeaderCellDef style="width: 100%;"> Reason </th>
+      <td mat-cell *matCellDef="let element"> {{element.reason}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let i = index; let row; columns: displayedColumns;" [ngClass]="row.class"></tr>
+  </table>
+</div>

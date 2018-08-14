@@ -1,0 +1,62 @@
+form {
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.button-row button {
+    margin-right: 10px;
+}
+
+.dt-picker input {
+    padding-left: 20px;
+}
+
+mat-form-field {
+    margin-right: 10px;
+}
+
+.button-row {
+    padding-left: 10px;
+}
+
+.table-container{
+    width: 270px;
+    margin-top: 10px;
+}
+
+.claim_processed td {
+    background-color: #29fc4c;
+}
+
+.claim_pending_uk td {
+    background-color: #80a8ff;
+}
+
+.claim_pending_intl td {
+    background-color: #2465f4;
+}
+
+.claim_accepted td {
+    background-color: #d124f4;
+}
+
+.claim_no_reply td {
+    background-color: #cef424;
+}
+
+.claim_over_time td {
+    background-color: #fa390e;
+}
+
+.claim_delivered td {
+    background-color: #e49c16;
+}
+
+.claim_unable td {
+    background-color: #7f009e;
+}
+
+.claim_follow_up td {
+    background-color: #9e630a;
+}

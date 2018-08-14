@@ -1,0 +1,39 @@
+<h1 mat-dialog-title>Add Claim</h1>
+<div mat-dialog-content>
+  <form #f="ngForm" class="container" novalidate>
+    <mat-form-field>
+      <input name="dateOfClaim" matInput [matDatepicker]="picker1" placeholder="Date of Claim" [(ngModel)]="claim.dateOfClaim" required>
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input name="orderNo" matInput placeholder="Order #" [(ngModel)]="claim.orderNo" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input name="stockNumber" matInput placeholder="Stock Number" [(ngModel)]="claim.stockNumber" required #skuInput (input)="skuInput.value=$event.target.value.toUpperCase()">
+    </mat-form-field>
+    <mat-form-field>
+      <input name="dispatchDate" matInput [matDatepicker]="picker2" placeholder="Dispatch Date" [(ngModel)]="claim.dispatchDate" required>
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input name="dateToClaimFrom" matInput [matDatepicker]="picker3" placeholder="Date to Claim From" [(ngModel)]="claim.dateToClaimFrom" required>
+      <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+      <mat-datepicker #picker3></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input name="trackingNumber" matInput placeholder="Tracking Number" [(ngModel)]="claim.trackingNumber" required #trkInput (input)="trkInput.value=$event.target.value.toUpperCase()">
+    </mat-form-field>
+    <mat-form-field>
+      <input name="reasonForClaim" matInput placeholder="Reason For Claim" [(ngModel)]="claim.reasonForClaim">
+    </mat-form-field>
+    <mat-form-field>
+      <input name="prepaidLabel" matInput placeholder="Pre Paid Label" [(ngModel)]="claim.prepaidLabel">
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSubmit(f)" cdkFocusInitial [disabled]="f.invalid">Save Changes</button>
+</div>

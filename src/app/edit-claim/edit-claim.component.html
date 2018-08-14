@@ -1,0 +1,71 @@
+<h1 mat-dialog-title>Edit Claim</h1>
+<div mat-dialog-content class="container">
+  <form #f="ngForm" class="container" novalidate>
+    <mat-form-field>
+      <input name="dateOfClaim" matInput [matDatepicker]="picker1" placeholder="Date of Claim" [(ngModel)]="claim.dateOfClaim" required>
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input name="orderNo" matInput placeholder="Order #" [(ngModel)]="claim.orderNo" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input name="stockNumber" matInput placeholder="Stock Number" [(ngModel)]="claim.stockNumber" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input name="dispatchDate" matInput [matDatepicker]="picker2" placeholder="Dispatch Date" [(ngModel)]="claim.dispatchDate" required>
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input name="dateToClaimFrom" matInput [matDatepicker]="picker3" placeholder="Date to Claim From" [(ngModel)]="claim.dateToClaimFrom" required>
+      <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+      <mat-datepicker #picker3></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input name="trackingNumber" matInput placeholder="Tracking Number" [(ngModel)]="claim.trackingNumber" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input name="reasonForClaim" matInput placeholder="Reason For Claim" [(ngModel)]="claim.reasonForClaim">
+    </mat-form-field>
+    <mat-form-field>
+      <input name="prepaidLabel" matInput placeholder="Pre Paid Label" [(ngModel)]="claim.prepaidLabel">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select name="claimType" matInput placeholder="Claim Type" [(ngModel)]="claim.claimType">
+        <mat-option value="0"></mat-option>
+        <mat-option value="1">NATIONAL</mat-option>
+        <mat-option value="2">INTERNATIONAL</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select name="claimSubmitted" matInput placeholder="Claim Submitted" [(ngModel)]="claim.claimSubmitted">
+        <mat-option value="0"></mat-option>
+        <mat-option value="1">YES</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input name="claimSubmittedDate" matInput [matDatepicker]="picker4" placeholder="Date to Claim From" [(ngModel)]="claim.claimSubmittedDate">
+      <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+      <mat-datepicker #picker4></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select name="claimStatus" matInput placeholder="Claim Status" [(ngModel)]="claim.claimStatus">
+        <mat-option value="0"></mat-option>
+        <mat-option class="claim_processed" value="1">CLAIM PROCESSED</mat-option>
+        <mat-option class="claim_pending_uk" value="2">CLAIM PENDING (UK)</mat-option>
+        <mat-option class="claim_pending_intl" value="3">CLAIM PENDING (INTERNATIONAL)</mat-option>
+        <mat-option class="claim_accepted" value="4">CLAIM ACCEPTED</mat-option>
+        <mat-option class="claim_no_reply" value="5">NO REPLY TO P91</mat-option>
+        <mat-option class="claim_over_time" value="6">OVER TIME PERIOD</mat-option>
+        <mat-option class="claim_delivered" value="7">DELIVERED/COLLECTED FROM DEPOT/RTS</mat-option>
+        <mat-option class="claim_unable" value="8">UNABLE TO CLAIM</mat-option>
+        <mat-option class="claim_follow_up" value="9">FOLLOW UP</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="claim" cdkFocusInitial [disabled]="f.invalid">Save Changes</button>
+</div>
