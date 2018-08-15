@@ -49,6 +49,7 @@ export class PdClaimsComponent implements OnInit {
         let claim: Claim = result;
         claim.isSelected = false;
         this.claimsService.addClaim(claim).subscribe(data => {
+          console.log(data);
           const tableData = this.dataSource.data;
           tableData.push(data);
           this.dataSource.data = tableData;
@@ -102,10 +103,11 @@ export class PdClaimsComponent implements OnInit {
           claim.claimStatus = 'FOLLOW UP';
         }
         this.claimsService.editClaim(claim).subscribe(data => {
+          console.log(data);
           const tableData = this.dataSource.data.map(item => {
             item.isSelected = false;
             if (item.id == data.id) {
-              if (!isDate(data.claimSubmittedDate)) {
+              if (data.claimSubmittedDate.toString() == "Invalid date") {
                 data.claimSubmittedDate = null;
               }
               item = data;

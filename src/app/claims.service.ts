@@ -11,8 +11,8 @@ import { Credit } from './shared/credit-model';
 })
 export class ClaimsService {
 
-  private baseURL_Api_Endpoint: string = './api.php';
-
+  private baseURL_Api_Endpoint: string = 'http://172.25.0.35/claims-app/api.php';
+  
   constructor(private http: HttpClient) { }
 
   getClaims(): Observable<Claim[]> {
